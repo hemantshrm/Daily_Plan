@@ -32,3 +32,61 @@ class BottomBar extends StatelessWidget {
     );
   }
 }
+
+class BottomFields extends StatelessWidget {
+
+  BottomFields({this.imageDir,this.headText,this.subText,this.gradColor,this.gradStop});
+  final String imageDir, headText,subText;
+  final List<Color> gradColor;
+  final List<double> gradStop;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            vertical: 10, horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.asset(imageDir),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  headText,
+                  style: TextStyle(
+                    fontSize: 19.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Text(subText,
+                    style: TextStyle(
+                        fontSize: 15.0, color: Colors.black38))
+              ],
+            ),
+            Icon(
+              Icons.chevron_right,
+              size: 25,
+            )
+          ],
+        ),
+      ),
+      margin: EdgeInsets.symmetric(horizontal: 30),
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: gradColor,
+          stops: gradStop,
+        ),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(40.0),
+      ),
+    );
+  }
+}
