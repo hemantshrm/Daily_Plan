@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'account_screen.dart';
 import 'ActivityScreen.dart';
+import 'package:app_settings/app_settings.dart';
 
 //TODO push and pop items at the same time
 class DrawerUI extends StatelessWidget {
@@ -48,7 +49,7 @@ class DrawerUI extends StatelessWidget {
               color: Colors.black,
             ),
             itemName: 'Notifications',
-            onpress: () {},
+            onpress: () {AppSettings.openNotificationSettings();},
           ),
           DrawerListMenu(
             itemIcon: Icon(
@@ -64,7 +65,7 @@ class DrawerUI extends StatelessWidget {
               color: Colors.black,
             ),
             itemName: 'Settings',
-            onpress: () {},
+            onpress: () {AppSettings.openAppSettings();},
           ),
           Divider(
             thickness: 1,

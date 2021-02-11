@@ -6,6 +6,7 @@ import 'package:flutter_app/home_screen.dart';
 import 'account_screen.dart';
 import 'Upper_Icon.dart';
 
+
 class ActivityScreen extends StatefulWidget {
   static String id = 'Activity_screen';
   @override

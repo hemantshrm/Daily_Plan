@@ -20,7 +20,7 @@ class _AccountScreenState extends State<AccountScreen>
   void initState() {
     super.initState();
     controller = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
       vsync: this,
     );
     animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
@@ -56,7 +56,7 @@ class _AccountScreenState extends State<AccountScreen>
         backgroundColor: Colors.white,
       ),
       drawer: DrawerUI(),
-      backgroundColor: animation.value,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
