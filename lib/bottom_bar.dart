@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/ActivityScreen.dart';
 
 class BottomBar extends StatelessWidget {
+  final Color homeCol,actCol,troCol;
+  final Function homeOnpress, actonpress, troOnpress;
+  BottomBar ({this.actCol,this.actonpress,this.homeCol,this.homeOnpress,this.troCol,this.troOnpress});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +21,18 @@ class BottomBar extends StatelessWidget {
             IconButton(
               iconSize: 30.0,
               padding: EdgeInsets.only(left: 28.0),
-              icon: Icon(Icons.home),
-              onPressed: () {},
+              icon: Icon(Icons.home,color: homeCol),
+              onPressed: homeOnpress,
+            ),IconButton(
+              iconSize: 30.0,
+              icon: Icon(Icons.list_alt,color: actCol),
+              onPressed: actonpress,
             ),
             IconButton(
               iconSize: 30.0,
               padding: EdgeInsets.only(right: 28.0),
-              icon: Icon(Icons.emoji_events),
-              onPressed: () {},
+              icon: Icon(Icons.emoji_events,color: troCol),
+              onPressed: troOnpress,
             ),
           ],
         ),

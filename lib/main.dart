@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/ActivityScreen.dart';
+import 'package:flutter_app/account_screen.dart';
 import 'package:flutter_app/home_screen.dart';
 
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       routes: <String , WidgetBuilder>{
         ActivityScreen.id: (context) => ActivityScreen(),
         MyHomePage.id: (context) => MyHomePage(),
+        AccountScreen.id: (context) => AccountScreen(),
       }
     );
   }

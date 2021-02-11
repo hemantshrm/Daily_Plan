@@ -22,3 +22,4 @@ Widget ActivitySeeAll = Row(
     ),
   ],
 );
+

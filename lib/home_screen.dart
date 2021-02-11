@@ -1,13 +1,11 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/ActivityScreen.dart';
 import 'package:flutter_app/Upper_Icon.dart';
+import 'package:flutter_app/account_screen.dart';
 import 'bottom_bar.dart';
 import 'contants.dart';
-
-
+import 'drawer_ui.dart';
 
 class MyHomePage extends StatefulWidget {
   static String id = 'home_screen';
@@ -16,17 +14,49 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerUI(),
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 26),
+          child: IconButton(
+            icon: Icon(
+              Icons.menu_rounded,
+              color: Colors.black,
+              size: 40.0,
+            ),
+            onPressed: () {},
+          ),
+        ),
+        toolbarHeight: 65,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30,
+            ),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, AccountScreen.id);
+              },
+              child: Hero(tag: 'logo',
+                child: CircleAvatar(backgroundColor: Colors.white,
+                  child: Image.asset('images/logo.png'),
+                ),
+              ),
+            ),
+          ),
+        ],
+        elevation: 0,
+        backgroundColor: Colors.white,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
             color: Colors.white,
             child: Column(
               children: [
-                upperTop,
                 SizedBox(
                   height: 30,
                 ),
@@ -95,56 +125,38 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   height: 30.0,
                 ),
-                BottomFields(imageDir: 'images/standing.png',headText: 'Buying Fruits',subText: '3 of 5 Completed',gradColor: [Colors.white, Colors.lightBlue],gradStop: [0.0, 1.0],),
+                BottomFields(
+                  imageDir: 'images/standing.png',
+                  headText: 'Buying Fruits',
+                  subText: '3 of 5 Completed',
+                  gradColor: [Colors.white, Colors.deepPurple],
+                  gradStop: [0.0, 1.0],
+                ),
                 SizedBox(
                   height: 30.0,
                 ),
-                BottomFields(imageDir: 'images/stand.png',headText: 'Water the Plants',subText: '3 of 5 Completed',gradColor: [Colors.white, Colors.lightBlue],gradStop: [0.0, 1.0]),
+                BottomFields(
+                    imageDir: 'images/stand.png',
+                    headText: 'Water the Plants',
+                    subText: '3 of 5 Completed',
+                    gradColor: [Colors.white, Colors.deepPurple],
+                    gradStop: [0.0, 1.0]),
               ],
             ),
           ),
         ),
       ),
-      floatingActionButton: Container(
-        height: 65.0,
-        width: 65.0,
-        child: FittedBox(
-          child: FloatingActionButton(
-            onPressed: () {
-              Navigator.pushNamed(context, ActivityScreen.id);
-            },
-            child: Icon(
-              Icons.list,
-              color: Colors.white,
-            ),
-            // elevation: 5.0,
-          ),
-        ),
+      bottomNavigationBar: BottomBar(
+        actCol: Colors.black26,
+        troCol: Colors.black26,
+        homeCol: Colors.black,
+        actonpress: () {
+          Navigator.pushNamed(context, ActivityScreen.id);
+        },
+        troOnpress: () {
+          Navigator.pushNamed(context, AccountScreen.id);
+        },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomBar(),
     );
   }
 }
-
-
-Widget upperTop = Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  children: [
-    UpperIcons(
-      icon: Icon(
-        Icons.menu,
-        size: 35.0,
-      ),
-      colour: Color(0xfff1efef),
-    ),
-    UpperIcons(
-      icon: Icon(
-        Icons.account_circle_rounded,
-        color: Colors.black,
-        size: 35.0,
-      ),
-      colour: Color(0xffC7B5EF),
-    ),
-  ],
-);
