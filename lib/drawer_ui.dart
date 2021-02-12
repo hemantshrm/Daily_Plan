@@ -3,11 +3,7 @@ import 'account_screen.dart';
 import 'ActivityScreen.dart';
 import 'package:app_settings/app_settings.dart';
 
-//TODO push and pop items at the same time
 class DrawerUI extends StatelessWidget {
-  const DrawerUI({
-    Key key,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

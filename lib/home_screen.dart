@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/ActivityScreen.dart';
-import 'package:flutter_app/Upper_Icon.dart';
 import 'package:flutter_app/account_screen.dart';
 import 'bottom_bar.dart';
 import 'contants.dart';
 import 'drawer_ui.dart';
+import 'package:vibration/vibration.dart';
 
 class MyHomePage extends StatefulWidget {
   static String id = 'home_screen';
@@ -19,17 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       drawer: DrawerUI(),
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 26),
-          child: IconButton(
-            icon: Icon(
-              Icons.menu_rounded,
-              color: Colors.black,
-              size: 40.0,
-            ),
-            onPressed: () {},
-          ),
-        ),
+        iconTheme: IconThemeData(color: Colors.black),
         toolbarHeight: 65,
         actions: [
           Padding(
@@ -38,10 +28,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, AccountScreen.id);
+                Navigator.pushNamed(context, AccountScreen.id);Vibration.vibrate(amplitude: 50,duration: 50);
               },
-              child: Hero(tag: 'logo',
-                child: CircleAvatar(backgroundColor: Colors.white,
+              child: Hero(
+                tag: 'logo',
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
                   child: Image.asset('images/logo.png'),
                 ),
               ),
@@ -111,36 +103,34 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.symmetric(horizontal: 30),
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('images/bgmain.png'),
-                        fit: BoxFit.fill),
-                    color: Colors.white,
+                    // image: DecorationImage(
+                    //     image: AssetImage('images/bgmain.png'),
+                    //     fit: BoxFit.fill),
+                    // color: Colors.white,
+                    color: Color(0xffC1E3FC),
                     borderRadius: BorderRadius.circular(40.0),
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                ActivitySeeAll, // Activity and see all
+                activitySeeAll, // Activity and see all
                 SizedBox(
                   height: 30.0,
                 ),
                 BottomFields(
+                  contCol: Color(0xffF5F5F5),
                   imageDir: 'images/standing.png',
                   headText: 'Buying Fruits',
                   subText: '3 of 5 Completed',
-                  gradColor: [Colors.white, Colors.deepPurple],
-                  gradStop: [0.0, 1.0],
                 ),
                 SizedBox(
                   height: 30.0,
                 ),
-                BottomFields(
+                BottomFields(contCol: Color(0xffF5F5F5),
                     imageDir: 'images/stand.png',
                     headText: 'Water the Plants',
-                    subText: '3 of 5 Completed',
-                    gradColor: [Colors.white, Colors.deepPurple],
-                    gradStop: [0.0, 1.0]),
+                    subText: '3 of 5 Completed',)
               ],
             ),
           ),
@@ -151,10 +141,10 @@ class _MyHomePageState extends State<MyHomePage> {
         troCol: Colors.black26,
         homeCol: Colors.black,
         actonpress: () {
-          Navigator.pushNamed(context, ActivityScreen.id);
+          Navigator.pushNamed(context, ActivityScreen.id);Vibration.vibrate(amplitude: 50,duration: 50);
         },
         troOnpress: () {
-          Navigator.pushNamed(context, AccountScreen.id);
+          Navigator.pushNamed(context, AccountScreen.id);Vibration.vibrate(amplitude: 50,duration: 50);
         },
       ),
     );

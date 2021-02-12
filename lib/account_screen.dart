@@ -1,5 +1,3 @@
-import 'package:flutter_app/ActivityScreen.dart';
-import 'package:flutter_app/bottom_bar.dart';
 
 import 'home_screen.dart';
 import 'package:flutter/material.dart';
@@ -40,19 +38,11 @@ class _AccountScreenState extends State<AccountScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 26),
-          child: IconButton(
-            icon: Icon(
-              Icons.menu_rounded,
-              color: Colors.black,
-              size: 40.0,
-            ),
-            onPressed: () {},
-          ),
-        ),
-        toolbarHeight: 65,elevation: 0,
+      appBar: AppBar(
+
+        iconTheme: IconThemeData(color: Colors.black),
+        toolbarHeight: 65,
+        elevation: 0,
         backgroundColor: Colors.white,
       ),
       drawer: DrawerUI(),
@@ -64,11 +54,14 @@ class _AccountScreenState extends State<AccountScreen>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Hero(
-              tag: 'logo',
-              child: ClipOval(child: Image.asset('images/logo.png',width: 50,
-                height: 100,
-                fit: BoxFit.contain,))
-            ),
+                tag: 'logo',
+                child: ClipOval(
+                    child: Image.asset(
+                  'images/logo.png',
+                  width: 50,
+                  height: 100,
+                  fit: BoxFit.contain,
+                ))),
             SizedBox(
               height: 10,
             ),
@@ -86,11 +79,13 @@ class _AccountScreenState extends State<AccountScreen>
               ),
             ),
             SizedBox(
-              height: 48.0,
+              height: 40.0,
             ),
             MainButtons(
               colour: Colors.lightBlueAccent,
-              onpressed: () {},
+              onpressed: () {
+                Navigator.pushNamed(context, MyHomePage.id);
+              },
               title: 'Login',
             ),
             MainButtons(
@@ -100,17 +95,6 @@ class _AccountScreenState extends State<AccountScreen>
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomBar(
-        actCol: Colors.black26,
-        troCol: Colors.black,
-        homeCol: Colors.black26,
-        homeOnpress: () {
-          Navigator.pushNamed(context, MyHomePage.id);
-        },
-        actonpress: () {
-          Navigator.pushNamed(context, ActivityScreen.id);
-        },
       ),
     );
   }

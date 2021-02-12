@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/ActivityScreen.dart';
+
 
 class BottomBar extends StatelessWidget {
   final Color homeCol,actCol,troCol;
@@ -43,10 +43,9 @@ class BottomBar extends StatelessWidget {
 
 class BottomFields extends StatelessWidget {
 
-  BottomFields({this.imageDir,this.headText,this.subText,this.gradColor,this.gradStop});
+  BottomFields({this.contCol,this.imageDir,this.headText,this.subText});
   final String imageDir, headText,subText;
-  final List<Color> gradColor;
-  final List<double> gradStop;
+final Color contCol;
 
   @override
   Widget build(BuildContext context) {
@@ -88,11 +87,7 @@ class BottomFields extends StatelessWidget {
       height: 100,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: gradColor,
-          stops: gradStop,
-        ),
-        color: Colors.white,
+        color: contCol,
         borderRadius: BorderRadius.circular(40.0),
       ),
     );
